@@ -3,30 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 using System.Data;
 using System.Data.SqlClient;
 
 namespace CapaDatos
 {
-    public class DCategoria
+    public class DPresentacion
     {
-        private int _Idcategoria;
+        private int _idPresentacion;
         private string _Nombre;
         private string _Descripcion;
-
-
         private string _TextoBuscar;
 
-        public int Idcategoria
+        public int IdPresentacion
         {
             get
             {
-                return _Idcategoria;
+                return _idPresentacion;
             }
 
             set
             {
-                _Idcategoria = value;
+                _idPresentacion = value;
             }
         }
 
@@ -68,23 +67,17 @@ namespace CapaDatos
                 _TextoBuscar = value;
             }
         }
-        //Constructor vacio
-        public DCategoria()
+        
+        public DPresentacion(int idpresentacion, string nombre, string descripcion, string textobuscar)
         {
-
-        }
-
-        //Constructor con parametros
-        public DCategoria(int idcategoria, string nombre, string descripcion, string textobuscar)
-        {
-            this.Idcategoria = idcategoria;
+            this.IdPresentacion = idpresentacion;
             this.Nombre = nombre;
             this.Descripcion = descripcion;
             this.TextoBuscar = textobuscar;
         }
 
-        //Metodo Insertar
-        public string Insertar(DCategoria Categoria)
+        //Insertar
+        public string Insertar(DPresentacion Presentacion)
         {
             string rpta = "";
             SqlConnection SqlCon = new SqlConnection();
@@ -96,27 +89,27 @@ namespace CapaDatos
                 //Establecer Comando
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = SqlCon;
-                SqlCmd.CommandText = "spinsertar_categoria";
+                SqlCmd.CommandText = "spinsertar_presentacion";
                 SqlCmd.CommandType = CommandType.StoredProcedure;
 
-                SqlParameter ParIdCategoria = new SqlParameter();
-                ParIdCategoria.ParameterName = "@idcategoria";
-                ParIdCategoria.SqlDbType = SqlDbType.Int;
-                ParIdCategoria.Direction = ParameterDirection.Output;
-                SqlCmd.Parameters.Add(ParIdCategoria);
+                SqlParameter ParIdPresetacion = new SqlParameter();
+                ParIdPresetacion.ParameterName = "@idpresentacion";
+                ParIdPresetacion.SqlDbType = SqlDbType.Int;
+                ParIdPresetacion.Direction = ParameterDirection.Output;
+                SqlCmd.Parameters.Add(ParIdPresetacion);
 
                 SqlParameter ParNombre = new SqlParameter();
                 ParNombre.ParameterName = "@nombre";
                 ParNombre.SqlDbType = SqlDbType.VarChar;
                 ParNombre.Size = 50;
-                ParNombre.Value = Categoria.Nombre;
+                ParNombre.Value = Presentacion.Nombre;
                 SqlCmd.Parameters.Add(ParNombre);
 
                 SqlParameter ParDescripcion = new SqlParameter();
                 ParDescripcion.ParameterName = "@descripcion";
                 ParDescripcion.SqlDbType = SqlDbType.VarChar;
                 ParDescripcion.Size = 256;
-                ParDescripcion.Value = Categoria.Descripcion;
+                ParDescripcion.Value = Presentacion.Descripcion;
                 SqlCmd.Parameters.Add(ParDescripcion);
 
                 //Ejecutamos nuestro comando 
@@ -124,7 +117,7 @@ namespace CapaDatos
 
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 rpta = ex.Message;
             }
@@ -135,8 +128,7 @@ namespace CapaDatos
             return rpta;
         }
 
-        //Metodo Editar
-        public string Editar(DCategoria Categoria)
+        public string Editar(DPresentacion Presentacion)
         {
             string rpta = "";
             SqlConnection SqlCon = new SqlConnection();
@@ -148,27 +140,27 @@ namespace CapaDatos
                 //Establecer Comando
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = SqlCon;
-                SqlCmd.CommandText = "speditar_categoria";
+                SqlCmd.CommandText = "speditar_presentacion";
                 SqlCmd.CommandType = CommandType.StoredProcedure;
 
-                SqlParameter ParIdCategoria = new SqlParameter();
-                ParIdCategoria.ParameterName = "@idcategoria";
-                ParIdCategoria.SqlDbType = SqlDbType.Int;
-                ParIdCategoria.Value = Categoria.Idcategoria;
-                SqlCmd.Parameters.Add(ParIdCategoria);
+                SqlParameter ParIdPresentacion = new SqlParameter();
+                ParIdPresentacion.ParameterName = "@idpresentacion";
+                ParIdPresentacion.SqlDbType = SqlDbType.Int;
+                ParIdPresentacion.Value = Presentacion.IdPresentacion;
+                SqlCmd.Parameters.Add(ParIdPresentacion);
 
                 SqlParameter ParNombre = new SqlParameter();
                 ParNombre.ParameterName = "@nombre";
                 ParNombre.SqlDbType = SqlDbType.VarChar;
                 ParNombre.Size = 50;
-                ParNombre.Value = Categoria.Nombre;
+                ParNombre.Value = Presentacion.Nombre;
                 SqlCmd.Parameters.Add(ParNombre);
 
                 SqlParameter ParDescripcion = new SqlParameter();
                 ParDescripcion.ParameterName = "@descripcion";
                 ParDescripcion.SqlDbType = SqlDbType.VarChar;
                 ParDescripcion.Size = 256;
-                ParDescripcion.Value = Categoria.Descripcion;
+                ParDescripcion.Value = Presentacion.Descripcion;
                 SqlCmd.Parameters.Add(ParDescripcion);
 
                 //Ejecutamos nuestro comando 
@@ -186,8 +178,7 @@ namespace CapaDatos
             return rpta;
         }
 
-        //Metodo Eliminar
-        public string Eliminar(DCategoria Categoria)
+        public string Eliminar(DPresentacion Presentacion)
         {
             string rpta = "";
             SqlConnection SqlCon = new SqlConnection();
@@ -199,16 +190,16 @@ namespace CapaDatos
                 //Establecer Comando
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = SqlCon;
-                SqlCmd.CommandText = "speliminar_categoria";
+                SqlCmd.CommandText = "speliminar_presentacion";
                 SqlCmd.CommandType = CommandType.StoredProcedure;
 
-                SqlParameter ParIdCategoria = new SqlParameter();
-                ParIdCategoria.ParameterName = "@idcategoria";
-                ParIdCategoria.SqlDbType = SqlDbType.Int;
-                ParIdCategoria.Value = Categoria.Idcategoria;
-                SqlCmd.Parameters.Add(ParIdCategoria);
+                SqlParameter ParIdPresentacion = new SqlParameter();
+                ParIdPresentacion.ParameterName = "@idpresentacion";
+                ParIdPresentacion.SqlDbType = SqlDbType.Int;
+                ParIdPresentacion.Value = Presentacion.IdPresentacion;
+                SqlCmd.Parameters.Add(ParIdPresentacion);
 
-                 //Ejecutamos nuestro comando 
+                //Ejecutamos nuestro comando 
                 rpta = SqlCmd.ExecuteNonQuery() == 1 ? "OK" : "No se actualizo el registro";
 
             }
@@ -223,10 +214,9 @@ namespace CapaDatos
             return rpta;
         }
 
-        //Metodo Mostrar
         public DataTable Mostrar()
         {
-            DataTable DtResultado = new DataTable("Categoria");
+            DataTable DtResultado = new DataTable("Presentacion");
             SqlConnection SqlCon = new SqlConnection();
             try
             {
@@ -235,38 +225,6 @@ namespace CapaDatos
                 SqlCmd.Connection = SqlCon;
                 SqlCmd.CommandText = "spmostrar_categoria";
                 SqlCmd.CommandType = CommandType.StoredProcedure;
-
-                SqlDataAdapter SqlDat = new SqlDataAdapter(SqlCmd);
-                SqlDat.Fill(DtResultado);
-
-            }
-            catch(Exception ex)
-            {
-
-                DtResultado = null;
-            }
-            return DtResultado;
-        }
-
-        //Metodo Buscar Nombre
-        public DataTable BuscarNombre(DCategoria Categoria)
-        {
-            DataTable DtResultado = new DataTable();
-            SqlConnection SqlCon = new SqlConnection();
-            try
-            {
-                SqlCon.ConnectionString = Conexion.Cn;
-                SqlCommand SqlCmd = new SqlCommand();
-                SqlCmd.Connection = SqlCon;
-                SqlCmd.CommandText = "spbuscar_categoria";
-                SqlCmd.CommandType = CommandType.StoredProcedure;
-
-                SqlParameter ParTextoBuscar = new SqlParameter();
-                ParTextoBuscar.ParameterName = "@textobuscar";
-                ParTextoBuscar.SqlDbType = SqlDbType.VarChar;
-                ParTextoBuscar.Size = 50;
-                ParTextoBuscar.Value = Categoria.TextoBuscar;
-                SqlCmd.Parameters.Add(ParTextoBuscar);
 
                 SqlDataAdapter SqlDat = new SqlDataAdapter(SqlCmd);
                 SqlDat.Fill(DtResultado);

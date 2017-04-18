@@ -236,7 +236,7 @@ namespace CapaPresentacion
                     string Codigo;
                     string Rpta = "";
 
-                    foreach(DataGridViewRow row in dataListado.Rows)
+                    foreach(DataGridViewRow row in dataListado.Rows) //Hace un recorrido de todos los códigos
                     {
                         if(Convert.ToBoolean(row.Cells[0].Value))
                         {
