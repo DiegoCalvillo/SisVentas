@@ -93,15 +93,7 @@ namespace CapaPresentacion
             this.OcultarColumnas();
             lblTotal.Text = "Total de resgistros: " + Convert.ToString(dataListado.Rows.Count);
         }
-        private void dataListado_DoubleClick(object sender, EventArgs e)
-        {
-            this.txtidpresentacion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["idpresentacion"].Value);
-            this.txtNombre.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["nombre"].Value);
-            this.txtDescripcion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["descripcion"].Value);
-
-            this.tabControl1.SelectedIndex = 1;
-        }
-
+        
         private void frmPresentacion_Load(object sender, EventArgs e)
         {
             this.Top = 0;
@@ -261,6 +253,15 @@ namespace CapaPresentacion
                 DataGridViewCheckBoxCell ChkEliminar = (DataGridViewCheckBoxCell)dataListado.Rows[e.RowIndex].Cells["Eliminar"];
                 ChkEliminar.Value = !Convert.ToBoolean(ChkEliminar.Value);
             }
+        }
+
+        private void dataListado_DoubleClick(object sender, EventArgs e)
+        {
+            this.txtidpresentacion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["idpresentacion"].Value);
+            this.txtNombre.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["nombre"].Value);
+            this.txtDescripcion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["descripcion"].Value);
+
+            this.tabControl1.SelectedIndex = 1;
         }
     }
 }
