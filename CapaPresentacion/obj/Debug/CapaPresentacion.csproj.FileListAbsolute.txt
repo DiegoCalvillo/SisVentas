@@ -9,3 +9,4 @@ C:\Users\Carlos\documents\visual studio 2015\Projects\SisVentas\CapaPresentacion
 C:\Users\Carlos\documents\visual studio 2015\Projects\SisVentas\CapaPresentacion\obj\Debug\CapaPresentacion.csproj.GenerateResource.Cache
 C:\Users\Carlos\documents\visual studio 2015\Projects\SisVentas\CapaPresentacion\obj\Debug\CapaPresentacion.dll
 C:\Users\Carlos\documents\visual studio 2015\Projects\SisVentas\CapaPresentacion\obj\Debug\CapaPresentacion.pdb
+C:\Users\Carlos\documents\visual studio 2015\Projects\SisVentas\CapaPresentacion\obj\Debug\CapaPresentacion.frmPresentacion.resources

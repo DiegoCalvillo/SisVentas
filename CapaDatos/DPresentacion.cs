@@ -67,6 +67,12 @@ namespace CapaDatos
                 _TextoBuscar = value;
             }
         }
+
+        //Constructor vacio
+        public DPresentacion()
+        {
+
+        }
         
         public DPresentacion(int idpresentacion, string nombre, string descripcion, string textobuscar)
         {
