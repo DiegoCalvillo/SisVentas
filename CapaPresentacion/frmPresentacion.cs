@@ -82,7 +82,7 @@ namespace CapaPresentacion
         private void Mostrar()
         {
             this.dataListado.DataSource = NPresentacion.Mostrar();
-            //this.OcultarColumnas();
+            this.OcultarColumnas();
             lblTotal.Text = "Total de resgistros: " + Convert.ToString(dataListado.Rows.Count);
         }
 
@@ -90,7 +90,7 @@ namespace CapaPresentacion
         private void BuscarNombre()
         {
             this.dataListado.DataSource = NPresentacion.BuscarNombre(this.txtBuscar.Text);
-            //this.OcultarColumnas();
+            this.OcultarColumnas();
             lblTotal.Text = "Total de resgistros: " + Convert.ToString(dataListado.Rows.Count);
         }
         private void dataListado_DoubleClick(object sender, EventArgs e)
