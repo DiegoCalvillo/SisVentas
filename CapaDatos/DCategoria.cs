@@ -251,14 +251,14 @@ namespace CapaDatos
         //Metodo Buscar Nombre
         public DataTable BuscarNombre(DCategoria Categoria)
         {
-            DataTable DtResultado = new DataTable();
+            DataTable DtResultado = new DataTable("Categoria");
             SqlConnection SqlCon = new SqlConnection();
             try
             {
                 SqlCon.ConnectionString = Conexion.Cn;
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = SqlCon;
-                SqlCmd.CommandText = "spbuscar_categoria";
+                SqlCmd.CommandText = "spbuscar_presentacion_nombre";
                 SqlCmd.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter ParTextoBuscar = new SqlParameter();
