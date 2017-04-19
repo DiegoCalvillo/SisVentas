@@ -262,6 +262,7 @@ namespace CapaPresentacion
             this.txtDescripcion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["descripcion"].Value);
 
             this.tabControl1.SelectedIndex = 1;
+
         }
     }
 }
