@@ -218,7 +218,7 @@ namespace CapaDatos
             return rpta;
         }
 
-        public string Editar(DPresentacion Presentacion)
+        public string Editar(DArticulo Articulo)
         {
             string rpta = "";
             SqlConnection SqlCon = new SqlConnection();
@@ -230,28 +230,53 @@ namespace CapaDatos
                 //Establecer Comando
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = SqlCon;
-                SqlCmd.CommandText = "speditar_presentacion";
+                SqlCmd.CommandText = "speditar_articulo";
                 SqlCmd.CommandType = CommandType.StoredProcedure;
 
-                SqlParameter ParIdPresentacion = new SqlParameter();
-                ParIdPresentacion.ParameterName = "@idpresentacion";
-                ParIdPresentacion.SqlDbType = SqlDbType.Int;
-                ParIdPresentacion.Value = Presentacion.IdPresentacion;
-                SqlCmd.Parameters.Add(ParIdPresentacion);
+                SqlParameter ParIdArticulo = new SqlParameter();
+                ParIdArticulo.ParameterName = "@idpresentacion";
+                ParIdArticulo.SqlDbType = SqlDbType.Int;
+                ParIdArticulo.Value = Articulo.Idarticulo;
+                SqlCmd.Parameters.Add(ParIdArticulo);
+
+                SqlParameter ParCodigo = new SqlParameter();
+                ParCodigo.ParameterName = "@codigo";
+                ParCodigo.SqlDbType = SqlDbType.VarChar;
+                ParCodigo.Size = 50;
+                ParCodigo.Value = Articulo.Codigo;
+                SqlCmd.Parameters.Add(ParCodigo);
 
                 SqlParameter ParNombre = new SqlParameter();
                 ParNombre.ParameterName = "@nombre";
                 ParNombre.SqlDbType = SqlDbType.VarChar;
                 ParNombre.Size = 50;
-                ParNombre.Value = Presentacion.Nombre;
+                ParNombre.Value = Articulo.Nombre;
                 SqlCmd.Parameters.Add(ParNombre);
 
                 SqlParameter ParDescripcion = new SqlParameter();
                 ParDescripcion.ParameterName = "@descripcion";
                 ParDescripcion.SqlDbType = SqlDbType.VarChar;
-                ParDescripcion.Size = 256;
-                ParDescripcion.Value = Presentacion.Descripcion;
+                ParDescripcion.Size = 1024;
+                ParDescripcion.Value = Articulo.Descripcion;
                 SqlCmd.Parameters.Add(ParDescripcion);
+
+                SqlParameter ParImagen = new SqlParameter();
+                ParImagen.ParameterName = "@imagen";
+                ParImagen.SqlDbType = SqlDbType.Image;
+                ParImagen.Value = Articulo.Imagen;
+                SqlCmd.Parameters.Add(ParImagen);
+
+                SqlParameter ParIdCategoria = new SqlParameter();
+                ParIdCategoria.ParameterName = "@idcategoria";
+                ParIdCategoria.SqlDbType = SqlDbType.Int;
+                ParIdCategoria.Value = Articulo.Idcategoria;
+                SqlCmd.Parameters.Add(ParIdCategoria);
+
+                SqlParameter ParIdPresentacion = new SqlParameter();
+                ParIdPresentacion.ParameterName = "@idpresentacion";
+                ParIdPresentacion.SqlDbType = SqlDbType.Int;
+                ParIdPresentacion.Value = Articulo.Idcategoria;
+                SqlCmd.Parameters.Add(ParIdPresentacion);
 
                 //Ejecutamos nuestro comando 
                 rpta = SqlCmd.ExecuteNonQuery() == 1 ? "OK" : "No se actualizao el registro";
@@ -268,7 +293,7 @@ namespace CapaDatos
             return rpta;
         }
 
-        public string Eliminar(DPresentacion Presentacion)
+        public string Eliminar(DArticulo Articulo)
         {
             string rpta = "";
             SqlConnection SqlCon = new SqlConnection();
@@ -280,14 +305,14 @@ namespace CapaDatos
                 //Establecer Comando
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = SqlCon;
-                SqlCmd.CommandText = "speliminar_presentacion";
+                SqlCmd.CommandText = "speliminar_articulo";
                 SqlCmd.CommandType = CommandType.StoredProcedure;
 
-                SqlParameter ParIdPresentacion = new SqlParameter();
-                ParIdPresentacion.ParameterName = "@idpresentacion";
-                ParIdPresentacion.SqlDbType = SqlDbType.Int;
-                ParIdPresentacion.Value = Presentacion.IdPresentacion;
-                SqlCmd.Parameters.Add(ParIdPresentacion);
+                SqlParameter ParIdArticulo = new SqlParameter();
+                ParIdArticulo.ParameterName = "@idarticulo";
+                ParIdArticulo.SqlDbType = SqlDbType.Int;
+                ParIdArticulo.Value = Articulo.Idarticulo;
+                SqlCmd.Parameters.Add(ParIdArticulo);
 
                 //Ejecutamos nuestro comando 
                 rpta = SqlCmd.ExecuteNonQuery() == 1 ? "OK" : "No se actualizo el registro";
@@ -306,14 +331,14 @@ namespace CapaDatos
 
         public DataTable Mostrar()
         {
-            DataTable DtResultado = new DataTable("Presentacion");
+            DataTable DtResultado = new DataTable("Articulo");
             SqlConnection SqlCon = new SqlConnection();
             try
             {
                 SqlCon.ConnectionString = Conexion.Cn;
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = SqlCon;
-                SqlCmd.CommandText = "spmostrar_presentaciones";
+                SqlCmd.CommandText = "spmostrar_articulo";
                 SqlCmd.CommandType = CommandType.StoredProcedure;
 
                 SqlDataAdapter SqlDat = new SqlDataAdapter(SqlCmd);
@@ -328,23 +353,23 @@ namespace CapaDatos
             return DtResultado;
         }
 
-        public DataTable BuscarNombre(DPresentacion Presentacion)
+        public DataTable BuscarNombre(DArticulo Articulo)
         {
-            DataTable DtResultado = new DataTable("Presentacion");
+            DataTable DtResultado = new DataTable("Articulo");
             SqlConnection SqlCon = new SqlConnection();
             try
             {
                 SqlCon.ConnectionString = Conexion.Cn;
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = SqlCon;
-                SqlCmd.CommandText = "spbuscar_presentacion_nombre";
+                SqlCmd.CommandText = "spbuscar_articulo_nombre";
                 SqlCmd.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter ParTextoBuscar = new SqlParameter();
                 ParTextoBuscar.ParameterName = "@textobuscar";
                 ParTextoBuscar.SqlDbType = SqlDbType.VarChar;
                 ParTextoBuscar.Size = 50;
-                ParTextoBuscar.Value = Presentacion.TextoBuscar;
+                ParTextoBuscar.Value = Articulo.TextoBuscar;
                 SqlCmd.Parameters.Add(ParTextoBuscar);
 
                 SqlDataAdapter SqlDat = new SqlDataAdapter(SqlCmd);
