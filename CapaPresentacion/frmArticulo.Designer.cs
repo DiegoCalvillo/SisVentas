@@ -259,6 +259,7 @@
             this.btnBuscarCategoria.Size = new System.Drawing.Size(43, 26);
             this.btnBuscarCategoria.TabIndex = 19;
             this.btnBuscarCategoria.UseVisualStyleBackColor = true;
+            this.btnBuscarCategoria.Click += new System.EventHandler(this.btnBuscarCategoria_Click);
             // 
             // txtidcategoria
             // 

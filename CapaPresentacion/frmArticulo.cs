@@ -348,5 +348,10 @@ namespace CapaPresentacion
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
         }
+
+        private void btnBuscarCategoria_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

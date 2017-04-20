@@ -28,9 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // frmVistaCategoria_Articulo
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "frmVistaCategoria_Articulo";
+            this.ClientSize = new System.Drawing.Size(795, 419);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Name = "frmVistaCategoria_Articulo";
+            this.Text = "Listado de Categorias";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
